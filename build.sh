@@ -268,7 +268,7 @@ function launch_build {
     if grep "bleeding-edge" <<<"${name}"; then
             debootstrap --variant=buildd jessie ${chroot_dir} http://ftp.us.debian.org/debian/ || return 1
     else
-            debootstrap --variant=buildd squeeze ${chroot_dir} http://archive.debian.org/debian/ || return 1
+            debootstrap --keyring=/usr/share/keyrings/debian-archive-removed-keys.gpg --variant=buildd squeeze ${chroot_dir} http://archive.debian.org/debian/ || return 1
     fi
 
     mkdir -p ${chroot_dir}/proc || return 1
